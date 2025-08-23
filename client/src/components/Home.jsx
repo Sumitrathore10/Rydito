@@ -1,19 +1,53 @@
-import React, {  useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
-import { useGSAP } from "@gsap/react"
-import gsap from "gsap";
 import LocationSearchPanel from "./LocationSearchPanel.jsx";
+import VehicalPanel from "./VehicalPanel.jsx";
+import RideConfirm from "./RideConfirm.jsx";
+import LookingForDriver from "./LookingForDriver.jsx";
+
 
 const Home = () => {
   const [pickup, setPickup] = useState("");
   const [destination, setDestination] = useState("");
   const [panel, setPanel] = useState(false);
+  const [vehicalpanel, setVehicalPanel] = useState(false);
+  const [rideConfirmation, setRideConfirmation] = useState(false);
+  const [driver, setDriver] = useState(false);
+
   const panelRef = useRef(null);
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted");
   };
 
+  const vehical = [
+    {
+      name: "Rydito Go",
+      seats: 4,
+      price: 99.7,
+      image: "https://mobile-content.uber.com/launch-experience/ride.png",
+      description: "Affordable Compact Rides",
+      time: "1 min away",
+    },
+    {
+      name: "Moto",
+      seats: 2,
+      price: 40.5,
+      image:
+        "https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/v1.1/Uber_Moto_India1.png",
+      description: "Affordable Moto Rides",
+      time: "2 min away",
+    },
+    {
+      name: "Auto",
+      seats: 3,
+      price: 80.5,
+      image:
+        "https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/v1.1/TukTuk_Green_v1.png",
+      description: "Affordable Auto Rides",
+      time: "2 min away",
+    },
+  ];
 
   return (
     <div className="relative w-screen poppins h-screen ">
@@ -26,22 +60,37 @@ const Home = () => {
           src="https://miro.medium.com/v2/resize:fit:1400/0*gwMx05pqII5hbfmX.gif"
           alt=""
         />
-        <div className="w-screen h-[100%] absolute flex  flex-col  justify-end overflow-hidden bottom-0">
-          <div className="w-full h-[30%] bg-white relative flex rounded-t-xl flex-col justify-center p-4 ">
+        <div className="w-screen h-[100%] z-20 absolute flex  flex-col  justify-end overflow-hidden bottom-0">
+          <div className="w-full h-[30%] bg-white  flex rounded-t-xl flex-col justify-center p-4 ">
+            <div className="m-auto w-12 rounded-full mt-2 bg-[#eee] py-[0.7%] px-5 text-white"></div>
+
             <div className="flex items-center justify-between mt-2  mb-2">
               <h2 className="text-2xl select-none font-semibold  text-gray-800">
-              Find a trip
-            </h2>
-            <FaChevronDown onClick={()=>setPanel(false)} className={`${panel ? "block" : "hidden"} text-xl mr-3 transition-all`}/>
+                Find a trip
+              </h2>
+              <FaChevronDown
+                onClick={() => setPanel(false)}
+                className={`${
+                  panel ? "block" : "hidden"
+                } text-xl mr-3 transition-all`}
+              />
             </div>
-            
+
             <form
               onSubmit={(e) => {
                 handleSubmit(e);
               }}
-              className="w-screen h-full  p-4 rounded-t-xl space-y-4"
+              className="w-screen h-full relative p-4 rounded-t-xl space-y-4"
             >
-              <div className="line absolute h-18 w-1 top-[40%] left-[5%] bg-gray-800 rounded-full "></div>
+              <div className="absolute top-[25%] left-[-1%] flex flex-col items-center justify-between gap-1">
+                <div className="flex justify-center items-center">
+                  <div className="w-2 h-2 rounded-full bg-gray-900"></div>
+                </div>
+                <div className="line  h-10 w-1 bg-gray-800 rounded-full "></div>
+                <div className="flex justify-center items-center">
+                  <div className="w-2 h-2 bg-gray-900"></div>
+                </div>
+              </div>
               <input
                 onClick={() => {
                   setPanel(true);
@@ -67,7 +116,22 @@ const Home = () => {
               />
             </form>
           </div>
-          <LocationSearchPanel panel={panel} panelRef={panelRef} />
+
+          <LocationSearchPanel
+            panel={panel}
+            setPanel={setPanel}
+            panelRef={panelRef}
+            vehicalpanel={vehicalpanel}
+            setVehicalPanel={setVehicalPanel}
+          />
+          <VehicalPanel
+            vehical={vehical}
+            vehicalpanel={vehicalpanel}
+            setVehicalPanel={setVehicalPanel}
+            setRideConfirmation={setRideConfirmation}
+          />
+           <RideConfirm rideConfirmation={rideConfirmation} setDriver={setDriver} setRideConfirmation={setRideConfirmation}/>
+           <LookingForDriver driver={driver} />
         </div>
       </div>
     </div>
