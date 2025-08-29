@@ -12,6 +12,7 @@ import Userlogout from "./components/Userlogout.jsx";
 import CaptainHome from "./components/CaptainHome.jsx";
 import Captainprotectedwrapper from "./components/Captainprotectedwrapper.jsx";
 import Captainlogout from "./components/Captainlogout.jsx";
+import Riding from "./components/Riding.jsx";
 
 const App = () => {
   return (
@@ -45,6 +46,7 @@ const App = () => {
         <Route path="/captain/login" element={<Captainlogin />} />
         <Route path="/captain/logout" element={<Captainlogout />}/>
         <Route path="/captain/register" element={<Captainregister />} />
+        <Route path="/user/riding" element={<Riding />} />
         <Route
           path="/user/home"
           element={

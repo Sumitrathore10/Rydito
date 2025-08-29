@@ -19,9 +19,7 @@ const First = () => {
       {/* Overlay Content */}
       <div className="relative flex flex-col justify-between h-full w-full poppins text-white">
         {/* Logo */}
-        <div className="text-4xl font-semibold ml-5 mt-4 select-none drop-shadow-lg">
-          Rydito.
-        </div>
+        
 
         {/* Transparent white box */}
         <div className="bg-white/30 backdrop-blur-md h-[22%] shadow-lg p-3 pt-5 pb-9 flex flex-col gap-4 w-full rounded-t-3xl">

@@ -4,6 +4,7 @@ import LocationSearchPanel from "./LocationSearchPanel.jsx";
 import VehicalPanel from "./VehicalPanel.jsx";
 import RideConfirm from "./RideConfirm.jsx";
 import LookingForDriver from "./LookingForDriver.jsx";
+import WaitingDriver from "./WaitingDriver.jsx";
 
 
 const Home = () => {
@@ -82,7 +83,7 @@ const Home = () => {
               }}
               className="w-screen h-full relative p-4 rounded-t-xl space-y-4"
             >
-              <div className="absolute top-[25%] left-[-1%] flex flex-col items-center justify-between gap-1">
+              <div className="absolute top-8 lg:top-8 left-[-1%] md:top-3 xl:left-0 xl:top-8 flex flex-col items-center justify-between gap-1">
                 <div className="flex justify-center items-center">
                   <div className="w-2 h-2 rounded-full bg-gray-900"></div>
                 </div>
@@ -132,6 +133,7 @@ const Home = () => {
           />
            <RideConfirm rideConfirmation={rideConfirmation} setDriver={setDriver} setRideConfirmation={setRideConfirmation}/>
            <LookingForDriver driver={driver} />
+           {/* <WaitingDriver driver={driver} /> */}
         </div>
       </div>
     </div>
